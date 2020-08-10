@@ -133,9 +133,80 @@
         $scope.submittedIndex = null;
         $scope.curPeriod = null;
         $scope.messageIndex = "";
-
         $scope.editEmailPageOpen = false;
         $scope.editPhoneNumberPageOpen = false;
+        $scope.submitJobDetailsPageOpen = false;
+        $scope.submitSupervisorPageOpen = false;
+        $scope.individualSupervisorOpen = true;
+        $scope.submitLocationPageOpen = false;
+        $scope.individualLocationOpen = true;
+        $scope.areYouSureSubmitRequestJob = false;
+        $scope.messageAdminPageOpen = false;
+        $scope.individualRequestedJobOpen = true;
+        $scope.requestIndex = null;
+        $scope.subconIndex = null;
+        $scope.locationIndex = null;
+        $scope.removeLocationLoading = false;
+        $scope.removeSupervisorLoading = false;
+        $scope.removeRequestedJobLoading = false;
+        $scope.removeRequestedJobSuccessful = false;
+        $scope.supervisorsArray = []
+        $scope.locationsArray = [];
+        $scope.submittedTimeSheetsArray = [];
+        $scope.addLocationSuccessful = false;
+        $scope.addSupervisorSuccessful = false;
+        $scope.submitLocationLoading = false;
+        $scope.submitSupervisorLoading = false;
+        $scope.ppeCannotBeEmpty = false;
+        $scope.worksiteDetailsCannotBeEmpty = false;
+        $scope.descriptionOfWorkCannotBeEmpty = false;
+        $scope.numberOfWorkersCannotBeEmpty = false
+        $scope.worksiteAddressCannotBeEmpty = false;
+        $scope.clientCannotBeEmpty = false;
+        $scope.supervisorCannotBeEmpty = false;
+        $scope.locationCannotBeEmpty = false;
+        $scope.timeDataCannotBeEmpty = false;
+        $scope.locationNameNotProvided = false;
+        $scope.locationAddressNotProvided = false;
+        $scope.locationPhoneNumberNotProvided = false;
+        $scope.locationContactNotProvided = false;
+        $scope.locationEmailNotProvided = false;
+        $scope.supervisorNameNotProvided = false;
+        $scope.supervisorEmailNotProvided = false;
+        $scope.supervisorPhoneNumberNotProvided = false;
+        $scope.shakeOn = false;
+        $scope.jobData = {};
+        $scope.timeData = {
+
+        };
+        $scope.messagePageOpen = false;
+        $scope.complaintsPageClientOpen = false;
+        $scope.messagePageSelected = false;
+        $scope.messagesLoading = false;
+        $scope.messageOpen = true;
+        $scope.areYouSure = false;
+        $scope.removeRightBorder = false
+        $scope.addHoursPageOpen = false;
+        $scope.timeData = {};
+        $scope.message = {
+            message: null,
+            subject: null
+        };
+        $scope.currentIndex = null;
+        $scope.currentIndex = null;
+        $scope.page = 0;
+        $scope.date = new Date();
+        $scope.dateNow = $scope.date.getDate()
+        $scope.month = $scope.date.getMonth() + 1;
+        $scope.year = $scope.date.getFullYear()
+        $scope.getOrdinalSuffix = function (number) {
+
+            var suffixes = ["'th'", "'st'", "'nd'", "'rd'"];
+            var relevantDigits = (number < 30) ? number % 20 : number % 30;
+            return (relevantDigits <= 3) ? suffixes[relevantDigits] : suffixes[0];
+
+        };
+        $scope.suffix = $scope.getOrdinalSuffix($scope.dateNow)
         $scope.phoneData = {
             newphonenumber: null
         }
@@ -150,6 +221,108 @@
         }
         $scope.phoneDataCannotBeEmpty = false;
         $scope.emailDataCannotBeEmpty = false;
+        $scope.showChart = true;
+        $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+        $scope.labels2 = ["January", "February", "March", "April", "May", "June", "July"];
+        $scope.labelsForChartsPage = ["#1", "#2", "#3", "#4", "#5", "#6", ""];
+        $scope.series = ['Series A'];
+        $scope.series2 = ['Series A'];
+        $scope.data = [
+            [0, 0, 0, 81, 56, 55, 40]
+
+        ];
+        $scope.data2 = [
+            [0, 0, 0, 81, 56, 55, 40]
+
+        ];
+        $scope.dataForChartsPage = [
+            [0, 0, 0, 0, 0, 0, 0]
+
+        ];
+        $scope.onClick = function (points, evt) {
+
+        };
+        setTimeout(function () {
+
+            $('select').material_select();
+
+        }, 15000);
+        $scope.datasetOverrideLineChart = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }, { backgroundColor: "rgba( 0,203,254,0.3)" }];
+        $scope.optionsLineChart = {
+            responsive: true,
+            scales: {
+                yAxes: [
+                    {
+                        id: 'y-axis-1',
+                        type: 'linear',
+                        display: true,
+                        position: 'left'
+                    },
+                    {
+                        id: 'y-axis-2',
+                        type: 'linear',
+                        display: true,
+                        position: 'right'
+                    }
+                ]
+            }
+        };
+        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+        $scope.options = {
+            responsive: true,
+            scales: {
+                yAxes: [
+                    {
+                        id: 'y-axis-1',
+                        type: 'linear',
+                        display: true,
+                        position: 'left'
+                    },
+                    {
+                        id: 'y-axis-2',
+                        type: 'linear',
+                        display: true,
+                        position: 'right'
+                    }
+                ]
+            }
+        }
+        $scope.delinquentTimeSheetPageOpen = false
+        $scope.delinquentJobDetails = {};
+        $scope.clientSubmittedJobDetails = {};
+        $scope.timesheetEntryOpen = true;
+        $scope.curTimesheet = null;
+        $scope.areYouSureTimeSheet = false;
+        $scope.minVarOut = ""
+        $scope.minVarIn = ""
+        $scope.hrVarOut = ""
+        $scope.hrVarIn = ""
+        $scope.supervisorListOpen = false;
+        $scope.payPeriodHistoryIndex = ""
+        //$scope.currentUserHistoryFile = "";
+        $scope.submitHoursLoading = false;
+        $scope.delinquentTimeSheetInPayPeriod = false;
+        $scope.locationListOpen = false;
+        $scope.firstAddSupervisors = false;
+        $scope.thenAddLocations = false;
+        $scope.youCanNowRequestJobs = false;
+        $scope.composeSupervisorPageOpen = false;
+        $scope.composeLocationPageOpen = false;
+        $scope.sendingFrom = $scope.userName
+        $scope.sendingTo = "ohrha harho"
+        $scope.sendingDate = ""
+        $scope.submitAdminMessageLoading = false;
+        $scope.submitAdminMessageSuccessfullySent = false;
+        $scope.timeSheetMessage = {
+            to: $scope.sendingTo,
+            from: $scope.sendingFrom,
+            subject: null,
+            body: null
+        }
+        $scope.requestJobFormOpen = false;
+        $scope.requestEmployeePageLoading = false;
+        $scope.globalPayPeriodIndexATM = ""
+        $scope.turnOffOthers= false;
 
         $scope.submitNewPhoneNumberClient = function () {
 
@@ -319,7 +492,6 @@
             })
 
         }
-
         $scope.openIndividualSubmittedTimeSheet = function (index) {
 
             if ($scope.individualSubmittedTimeSheetOpen && index !== $scope.submittedIndex) {
@@ -452,78 +624,7 @@
             phonenumber: null
 
         };
-        $scope.submitJobDetailsPageOpen = false;
-        $scope.submitSupervisorPageOpen = false;
-        $scope.individualSupervisorOpen = true;
-        $scope.submitLocationPageOpen = false;
-        $scope.individualLocationOpen = true;
-        $scope.areYouSureSubmitRequestJob = false;
-        $scope.messageAdminPageOpen = false;
-        $scope.individualRequestedJobOpen = true;
-        $scope.requestIndex = null;
-        $scope.subconIndex = null;
-        $scope.locationIndex = null;
-        $scope.removeLocationLoading = false;
-        $scope.removeSupervisorLoading = false;
-        $scope.removeRequestedJobLoading = false;
-        $scope.removeRequestedJobSuccessful = false;
-        $scope.supervisorsArray = []
-        $scope.locationsArray = [];
-        $scope.submittedTimeSheetsArray = [];
-        $scope.addLocationSuccessful = false;
-        $scope.addSupervisorSuccessful = false;
-        $scope.submitLocationLoading = false;
-        $scope.submitSupervisorLoading = false;
-        $scope.ppeCannotBeEmpty = false;
-        $scope.worksiteDetailsCannotBeEmpty = false;
-        $scope.descriptionOfWorkCannotBeEmpty = false;
-        $scope.numberOfWorkersCannotBeEmpty = false
-        $scope.worksiteAddressCannotBeEmpty = false;
-        $scope.clientCannotBeEmpty = false;
-        $scope.supervisorCannotBeEmpty = false;
-        $scope.locationCannotBeEmpty = false;
-        $scope.timeDataCannotBeEmpty = false;
-        $scope.locationNameNotProvided = false;
-        $scope.locationAddressNotProvided = false;
-        $scope.locationPhoneNumberNotProvided = false;
-        $scope.locationContactNotProvided = false;
-        $scope.locationEmailNotProvided = false;
-        $scope.supervisorNameNotProvided = false;
-        $scope.supervisorEmailNotProvided = false;
-        $scope.supervisorPhoneNumberNotProvided = false;
-        $scope.shakeOn = false;
-        $scope.jobData = {};
-        $scope.timeData = {
-
-        };
-        $scope.messagePageOpen = false;
-        $scope.complaintsPageClientOpen = false;
-        $scope.messagePageSelected = false;
-        $scope.messagesLoading = false;
-        $scope.messageOpen = true;
-        $scope.areYouSure = false;
-        $scope.removeRightBorder = false
-        $scope.addHoursPageOpen = false;
-        $scope.timeData = {};
-        $scope.message = {
-            message: null,
-            subject: null
-        };
-        $scope.currentIndex = null;
-        $scope.currentIndex = null;
-        $scope.page = 0;
-        $scope.date = new Date();
-        $scope.dateNow = $scope.date.getDate()
-        $scope.month = $scope.date.getMonth() + 1;
-        $scope.year = $scope.date.getFullYear()
-        $scope.getOrdinalSuffix = function (number) {
-
-            var suffixes = ["'th'", "'st'", "'nd'", "'rd'"];
-            var relevantDigits = (number < 30) ? number % 20 : number % 30;
-            return (relevantDigits <= 3) ? suffixes[relevantDigits] : suffixes[0];
-
-        };
-        $scope.suffix = $scope.getOrdinalSuffix($scope.dateNow)
+        
         if ($scope.month == 1) {
 
             $scope.monthName = "January"
@@ -574,83 +675,7 @@
 
         }
 
-        $scope.showChart = true;
-        $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-        $scope.labels2 = ["January", "February", "March", "April", "May", "June", "July"];
-        $scope.labelsForChartsPage = ["#1", "#2", "#3", "#4", "#5", "#6", ""];
-        $scope.series = ['Series A'];
-        $scope.series2 = ['Series A'];
-        $scope.data = [
-            [0, 0, 0, 81, 56, 55, 40]
-
-        ];
-        $scope.data2 = [
-            [0, 0, 0, 81, 56, 55, 40]
-
-        ];
-        $scope.dataForChartsPage = [
-            [0, 0, 0, 0, 0, 0, 0]
-
-        ];
-        $scope.onClick = function (points, evt) {
-
-        };
-        setTimeout(function () {
-
-            $('select').material_select();
-
-        }, 15000);
-        $scope.datasetOverrideLineChart = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }, { backgroundColor: "rgba( 0,203,254,0.3)" }];
-        $scope.optionsLineChart = {
-            responsive: true,
-            scales: {
-                yAxes: [
-                    {
-                        id: 'y-axis-1',
-                        type: 'linear',
-                        display: true,
-                        position: 'left'
-                    },
-                    {
-                        id: 'y-axis-2',
-                        type: 'linear',
-                        display: true,
-                        position: 'right'
-                    }
-                ]
-            }
-        };
-        $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-        $scope.options = {
-            responsive: true,
-            scales: {
-                yAxes: [
-                    {
-                        id: 'y-axis-1',
-                        type: 'linear',
-                        display: true,
-                        position: 'left'
-                    },
-                    {
-                        id: 'y-axis-2',
-                        type: 'linear',
-                        display: true,
-                        position: 'right'
-                    }
-                ]
-            }
-        }
-        $scope.delinquentTimeSheetPageOpen = false
-        $scope.delinquentJobDetails = {};
-        $scope.clientSubmittedJobDetails = {};
-        $scope.timesheetEntryOpen = true;
-        $scope.curTimesheet = null;
-        $scope.areYouSureTimeSheet = false;
-        $scope.minVarOut = ""
-        $scope.minVarIn = ""
-        $scope.hrVarOut = ""
-        $scope.hrVarIn = ""
-        $scope.supervisorListOpen = false;
+        
         $scope.openSupervisorList = function(){
 
             if(!$scope.supervisorListOpen){
@@ -665,8 +690,8 @@
             }
 
         }
-        $scope.locationListOpen = false;
         $scope.openLocationList = function(){
+
             if(!$scope.locationListOpen){
                 
                 $scope.locationListOpen = true;
@@ -775,12 +800,6 @@
             }
 
         }
-
-        $scope.firstAddSupervisors = false;
-        $scope.thenAddLocations = false;
-        $scope.youCanNowRequestJobs = false;
-        $scope.composeSupervisorPageOpen = false;
-        $scope.composeLocationPageOpen = false;
         $scope.openComposeLocationPage = function () {
 
             if (!$scope.composeLocationPageOpen) {
@@ -1414,10 +1433,7 @@
 
         } else {
 
-            //console.log("Not Logged In")
-
         }
-
         $scope.openDisputedTimeSheetsPage = function () {
 
             if (!$scope.disputedTimeSheetsPageOpen) {
@@ -1427,7 +1443,6 @@
             }
 
         }
-
         $scope.removeRequestedJob = function (index) {
 
             var jobData = {
@@ -1740,17 +1755,6 @@
             }
 
         }
-        $scope.sendingFrom = $scope.userName
-        $scope.sendingTo = "ohrha harho"
-        $scope.sendingDate = ""
-        $scope.submitAdminMessageLoading = false;
-        $scope.submitAdminMessageSuccessfullySent = false;
-        $scope.timeSheetMessage = {
-            to: $scope.sendingTo,
-            from: $scope.sendingFrom,
-            subject: null,
-            body: null
-        }
         $scope.submitTimeSheetMessage = function () {
 
             $scope.allFieldsMustBeInput = false;
@@ -2028,8 +2032,7 @@
             }
 
         }
-
-$scope.requestJobFormOpen = false;
+        
 $scope.openRequestJobForm = function(){
 
     if(!$scope.requestJobFormOpen){
@@ -2058,7 +2061,6 @@ $scope.openRequestList = function(){
     }
 
 }
-$scope.requestEmployeePageLoading = false;
 
         $scope.openRequestEmployeePage = function () {
 
@@ -2148,8 +2150,7 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-        $scope.delinquentTimeSheetInPayPeriod = false;
-
+      
         Auth.getUser().then(function (data) {
 
             //console.log(data)
@@ -2352,7 +2353,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-
         $scope.openAreYouSure = function (index) {
 
             if (!$scope.areYouSure) {
@@ -2839,7 +2839,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-
         $scope.openAddLocationPage = function () {
 
             if (!$scope.addLocationPageOpen) {
@@ -3029,7 +3028,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-  
         $scope.closeAddHours = function () {
 
             $scope.addHoursPageOpen = false;
@@ -3325,8 +3323,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-
-
         $scope.changePage = function () {
 
             $scope.currentIndex = null; 
@@ -3370,7 +3366,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-
         $scope.changePage2 = function () {
 
             if ($scope.page < $scope.usersPaginated.length - 1) {
@@ -3762,11 +3757,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-
-        $scope.payPeriodHistoryIndex = ""
-        //$scope.currentUserHistoryFile = "";
-        $scope.submitHoursLoading = false;
-
         $scope.submitHours = function (index, client, location, currentuser, page, payperiodindex) {
 
             $scope.allFieldsMustBeInput = false
@@ -4101,7 +4091,6 @@ $scope.requestEmployeePageLoading = false;
             }
           
         }
-
         $scope.openUserFile = function (name, phonenumber) {
 
             $('html, body').animate({ scrollTop: 0 }, 'fast');
@@ -4261,7 +4250,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-
         $scope.openChartsPage = function () {
 
             if (!$scope.chartsPageOpen) {
@@ -4419,7 +4407,6 @@ $scope.requestEmployeePageLoading = false;
             }, 500)
 
         }
-
         $scope.increaseDay = function () {
 
             $scope.currentJobInDate = 0;
@@ -4866,20 +4853,17 @@ $scope.requestEmployeePageLoading = false;
             }, 500)
 
         }
-
-        $scope.globalPayPeriodIndexATM = ""
-        $scope.turnOffOthers= false;
         $scope.openProfileHome = function(){
-        $scope.profileHome =  true;
-        $scope.historyPageOpenProfile = false;
-        $scope.turnOffOthers = false;
-        $scope.chartsPageOpen = false;
-        $scope.messagePageOpen = false;
-        $scope.composeMessagePageOpen = false
-        $scope.curPeriod = null;
+
+            $scope.profileHome =  true;
+            $scope.historyPageOpenProfile = false;
+            $scope.turnOffOthers = false;
+            $scope.chartsPageOpen = false;
+            $scope.messagePageOpen = false;
+            $scope.composeMessagePageOpen = false
+            $scope.curPeriod = null;
 
         }
-
         $scope.closeIndividualPayPeriod = function(){
 
             $scope.turnOffOthers = false;
@@ -5020,7 +5004,6 @@ $scope.requestEmployeePageLoading = false;
             }
 
         }
-
         $scope.areYouAvailable = function () {
 
             if ($scope.availability == 1) {
