@@ -188,12 +188,23 @@
         $scope.loadingNewJob = false;
         $scope.loadingAddAndRemoveDelinquentTimeSheet = false;
         $scope.loadingDisputedTimeSheetsPage = false;
+        $scope.loadingAddDelinquentTimeSheet = false;
+        $scope.turnOtherPayPeriodsOff = false;
+        $scope.globalPayPeriodIndexATM = "";
+        $scope.addHoursDelinquentPageOpen = false;
+        $scope.submitHoursLoading = false;
         $scope.submitHoursLoading = false;
         $scope.addHoursPageOpen = false;
         $scope.areYouSure = false;
         $scope.areYouSureRemove2 = false;
         $scope.payPeriodUpdated = false;
         $scope.delinquentTimeSheet = false;
+        $scope.individualUser = false;
+        $scope.employeeListOpenAdmin = false;
+        $scope.totalHours = 0
+        $scope.loadingUserList = false
+        $scope.requestedJobsPaginated = [];
+        $scope.requestedJobsForPagination = [];
         $scope.currentUserFile = "";
         $scope.employees = [];
         $scope.selectedItem = {};
@@ -1063,8 +1074,6 @@
             }
 
         }
-
-
         $scope.openMessage = function (index, messageIndex, timesheetData) {
 
             $('select').material_select();
@@ -1325,7 +1334,6 @@
             })
 
         }
-
         $scope.timeSheetMessage = {
 
             to: "ohrha harho",
@@ -1334,8 +1342,6 @@
             body: null
 
         }
-     
-
         $scope.openMessageAdminPage = function (date, employee, client) {
 
             console.log(date, employee, client)
@@ -1361,7 +1367,6 @@
             }
 
         }
-
         $scope.submitTimeSheetMessage = function () {
 
             $scope.messageAdminPageOpen = false;
@@ -1399,7 +1404,6 @@
             }
 
         }
-
         User.getAdmin().then(function (data) {
 
             console.log(data)
@@ -2835,7 +2839,6 @@
             })
        
         })
-
         $scope.openMessagePage = function () {
 
             if ($scope.messagePageOpen) {
@@ -2945,7 +2948,6 @@
             }
 
         }
-        $scope.addHoursDelinquentPageOpen = false;
         $scope.openAddHoursPageDelinquent = function () {
 
             $('select').material_select();
@@ -2957,9 +2959,6 @@
 
         }
         
-        $scope.loadingAddDelinquentTimeSheet = false;
-        $scope.submitHoursLoading = false;
-
         $scope.submitHoursDelinquent = function (index, client, location, currentuser, page, payperiodindex) {
             
             console.log(page)
@@ -4013,7 +4012,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.openGeneratePaySlipPage = function () {
 
         $scope.generatePaySlipPageOpen = true;
@@ -4030,7 +4028,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.openIndividualDelinquentTimeSheet = function (index, timesheetData) {
 
         console.log(index)
@@ -4067,7 +4064,6 @@ console.log($scope.currentJobInDate)
     
         
     }
-
     $scope.openIndividualHistoryEntry = function (index) {
 
         console.log(index)
@@ -4106,11 +4102,6 @@ console.log($scope.currentJobInDate)
         }, 500)
 
     }
-
-
-    $scope.turnOtherPayPeriodsOff = false;
-    $scope.globalPayPeriodIndexATM = "";
-
     $scope.openIndividualPayPeriod = function (index) {
 
         console.log(index)
@@ -4189,7 +4180,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.openIncompletePayPeriodPage = function () {
 
         $scope.incompletePayPeriodPageOpen = true;
@@ -4374,7 +4364,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.submitTimeSheet = function (timesheet, index) {
 
         console.log($scope.timeData)
@@ -4419,7 +4408,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.createClient = function () {
 
         Client.create("Displayworks").then(function (data) {
@@ -4429,7 +4417,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.createLocation = function () {
 
         Location.create("Sky City").then(function (data) {
@@ -4437,7 +4424,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.createSupervisor = function () {
 
         Supervisor.create("Benjamin").then(function (data) {
@@ -4447,7 +4433,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.sendTimeSheetReminderText = function (date, userData) {
 
 
@@ -4475,7 +4460,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.removeUser = function (name) {
 
         $scope.loadingRemoveUser = true;
@@ -4490,14 +4474,12 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.closeAreYouSureRemove2 = function () {
 
         console.log("HELo")
         $scope.areYouSureRemove3 = false;
 
     }
-
     $scope.openAreYouSureRemove = function () {
 
         if (!$scope.areYouSureRemove3) {
@@ -4508,9 +4490,7 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.areYouSureRMessage = false;
-
     $scope.openAreYouSure = function (index) {
 
         if (!$scope.areYouSureRMessage) {
@@ -4522,7 +4502,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.removeMessage = function (index, messageIndex) {
 
         $scope.messageLoading = true;
@@ -4595,13 +4574,11 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.closeAreYouSure = function (index) {
 
         $scope.areYouSureRMessage = false;
 
     }
-
     $scope.openRemoveUserPage = function () {
 
         if (!$scope.removeUserPageOpen) {
@@ -4618,7 +4595,6 @@ console.log($scope.currentJobInDate)
 
         }
     }
-
     $scope.submitNewPayRate = function (name) {
 
         console.log($scope.payRateData)
@@ -4646,7 +4622,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.submitNewPhoneNumberClient = function (name) {
 
         console.log($scope.phoneNumberData)
@@ -4672,7 +4647,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.submitNewPhoneNumber = function (name) {
 
         console.log($scope.phoneNumberData)
@@ -4698,7 +4672,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.submitNewEmail = function (name) {
 
         console.log($scope.emailData)
@@ -4726,7 +4699,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.submitNewEmailClient = function (name) {
 
         console.log($scope.emailData)
@@ -4754,7 +4726,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.closeEditPayRatePage = function () {
 
         $scope.editPayRatePageOpen = false
@@ -4806,7 +4777,6 @@ console.log($scope.currentJobInDate)
         $scope.areYouSureRemove2 = false;
 
     }
-
     $scope.areYouSureRemove = function (job, jobindex, indexofjob) {
 
         console.log('clicked')
@@ -4897,7 +4867,6 @@ console.log($scope.currentJobInDate)
         console.log($scope.jobData)
 
     }
-
     $scope.openAddJobPage = function (job) {
 
         console.log(job)
@@ -4958,7 +4927,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     User.getUsers().then(function (data) {
 
         console.log(data.data.users.length)
@@ -4999,7 +4967,6 @@ console.log($scope.currentJobInDate)
 
 
     })
-
     User.getUsers().then(function (data) {
 
         console.log(data)
@@ -5074,8 +5041,6 @@ console.log($scope.currentJobInDate)
         $scope.adminMenuLoading = false;
 
     })
-
-
     $scope.closeSearchResults = function () {
 
         console.log("clicked")
@@ -5084,7 +5049,6 @@ console.log($scope.currentJobInDate)
         $scope.userList = true;
 
     }
-
     $scope.changePage = function () {
 
         if ($scope.page < $scope.employeesPaginated.length - 1) {
@@ -5106,7 +5070,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.changePage2 = function () {
 
         if ($scope.page < $scope.employeesPaginated.length - 1) {
@@ -5127,13 +5090,11 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.firstPageManageTimeSheets = function () {
 
         $scope.page = 0;
 
     }
-
     $scope.lastPageManageTimeSheets = function () {
 
         $scope.page = $scope.employeesPaginated.length - 1;
@@ -5187,7 +5148,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.firstPageApprovedJobs = function () {
 
         $scope.page = 0;
@@ -5335,7 +5295,6 @@ console.log($scope.currentJobInDate)
 
 
     }
-    $scope.totalHours = 0
     $scope.inputTotalHoursIntoUserFile = function () {
 
         $scope.userListArray = []
@@ -5434,7 +5393,6 @@ console.log($scope.currentJobInDate)
 
 
     }
-
     $scope.getLocations = function (name) {
 
         $scope.supervisorListLoading = true;
@@ -5471,8 +5429,6 @@ console.log($scope.currentJobInDate)
         $scope.curPeriod = null;
 
     }
-    $scope.loadingUserList = false
-
     $scope.openPayslipPage = function () {
 
         $scope.payslipPageOpen = true;
@@ -5630,7 +5586,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.openPayslipGenerationPage = function () {
 
         $scope.payslipGenerationOpen = true;
@@ -5640,8 +5595,6 @@ console.log($scope.currentJobInDate)
         $scope.userDetailsPageOpened = false;
 
     }
-
-
 
     /*PAYSLIP LOGIC */
 
@@ -6134,8 +6087,6 @@ console.log($scope.currentJobInDate)
 
         }
     }
-    $scope.employeeListOpenAdmin = false;
-
     $scope.openEmployeeListAdmin = function () {
 
 
@@ -6416,7 +6367,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
     $scope.openManagementPage = function () {
 
         User.findUser($rootScope.user_id).then(function (data) {
@@ -6547,8 +6497,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-    $scope.individualUser = false;
-
     $scope.openUserFileHistoryManageTimeSheets = function (name, phonenumber,id) {
 
         $scope.openJob = 0;
@@ -7007,10 +6955,6 @@ console.log($scope.currentJobInDate)
         }
 
     }
-
-    $scope.requestedJobsPaginated = [];
-    $scope.requestedJobsForPagination = [];
-
     $scope.openRequestedJobsPage2 = function () {
 
         console.log($scope.requestedJobsArray)
@@ -7093,7 +7037,6 @@ console.log($scope.currentJobInDate)
         })
 
     }
-
     $scope.closeAddJobPage = function () {
 
         $scope.addJobPageOpen = false;
