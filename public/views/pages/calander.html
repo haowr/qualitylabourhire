@@ -1,0 +1,298 @@
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content center-align">
+        <h4 class="railway">Book Job For {{name}}</h4>
+        <p style="font-size:24px;" class="railway">Are You Sure?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" ng-click="imSure()" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+
+    </div>
+</div>
+<div class="container animated fadeIn">
+
+    <div class="row">
+        <div style="border-bottom:1px solid black" class="col s12 center-align ">
+            <p style="font-size:24px;" class="railway"> {{month}} {{date}}, 2018 </p>
+        </div>
+        <div ng-show="jobDetails2" class="col s12 center-align animated fadeIn">
+           <bold> <p style="font-size:24px; text-decoration:underline;" class="railway"> BOOKED</p></bold>
+            <p style="font-size:20px; " class="railway"> Location:</p>
+
+            <p style="font-size:17px; " class="railway"> {{location2}}</p>
+
+            <p style="font-size:20px; " class="railway"> Contractor:</p>
+            <p style="font-size:17px; " class="railway"> {{contractor2}}</p>
+
+            <p style="font-size:20px; " class="railway"> Supervisor:</p>
+
+            <p style="font-size: 17px; " class="railway"> {{supervisor2}}</p>
+
+
+
+        </div>
+        <div ng-show="!jobDetails2" class="col s12 center-align animated fadeIn">
+
+            <p style="font-size:24px; text-decoration:underline;" class="railway"> Available?</p>
+            <!-- Switch -->
+            <div class="switch " ng-click="availabilityChanger();">
+                <label>
+      Unavailable
+      <input id="my-switch"  ng-checked="isSwitchedOn" type="checkbox" >
+      <span class="lever"></span>
+      Available
+    </label>
+                <br>
+            </div>
+
+            <!--  <div id="switch-panel" ng-show="isSwitchedOn">
+                <p>I'm switched on</p>
+            </div>-->
+        </div>
+        <br>
+        <form name="timeSheet" ng-submit="clockOut(timeData,timeSheet.$valid,timeSheet);">
+            <br>
+            <div class="input-field col s3">
+                <select name="hundreth" ng-model="timeData.hundreth">
+                    <option value="" disabled selected>X</option>
+      <option value="0">0</option>
+      <option value="1">1</option>
+   
+    </select>
+                <label>HRS</label>
+            </div>
+            <div class="input-field col s3">
+                <select name="hundreth2" ng-model="timeData.hundreth2">
+                                        <option value="" disabled selected>X</option>
+
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option   value="2">2</option>
+     <option  value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      
+   
+    </select>
+
+            </div>
+            <div class="input-field col s3">
+                <select name="minTenth" ng-model="timeData.minTenth">
+                                        <option value="" disabled selected>X</option>
+
+      <option  value="0">0</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+            <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+
+      
+   
+    </select>
+
+                <label>MINS</label>
+            </div>
+
+            <div class="input-field col s3">
+                <select name="minTenth2" ng-model="timeData.minTenth2">
+                                        <option value="" disabled selected>X</option>
+
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+            <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+            <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      
+   
+    </select>
+            </div>
+            <div class=" col s4">
+            </div>
+            <div class="input-field col s5 align-center">
+                <select name="inAmPm" ng-model="timeData.inAmPm">
+                                        <option value="" disabled selected>X</option>
+
+      <option value="AM" >AM</option>
+      <option value="PM">PM</option>
+
+   
+    </select>
+            </div>
+            <div class=" col s4">
+            </div>
+            <div class="col s12">
+                <p class="center-align"> TO</p>
+            </div>
+            <div class="input-field col s3">
+                <select name="outHundreth" ng-model="timeData.outHundreth">
+                                        <option value="" disabled selected>X</option>
+
+      <option value="0" >0</option>
+      <option value="1" >1</option>
+   
+    </select>
+                <label>HRS</label>
+            </div>
+            <div class="input-field col s3">
+                <select name="outHundreth2" ng-model="timeData.outHundreth2">
+                                        <option value="" disabled selected>X</option>
+
+      <option value="0" >0</option>
+      <option value="1" >1</option>
+      <option value="2">2</option>
+            <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+            <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      
+      
+   
+    </select>
+
+            </div>
+            <div class="input-field col s3">
+                <select name="outMinTenth" ng-model="timeData.outMinTenth">     
+                                        <option value="" disabled selected>X</option>
+ 
+                    <option value="0" >0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+            <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+
+      
+   
+    </select>
+
+                <label>MINS</label>
+            </div>
+
+            <div class="input-field col s3">
+                <select name="outMinTenth2" ng-model="timeData.outMinTenth2">
+                                        <option value="" disabled selected>X</option>
+
+      <option value="0" >0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+            <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+            <option value="6">6</option>
+      <option value="7">7</option>
+            <option value="8">8</option>
+      <option value="9">9</option>
+ 
+      
+   
+    </select>
+            </div>
+            <div class="input-field col s4">
+            </div>
+            <div class="input-field col s5 align-center">
+                <select name="outAmPm" ng-model="timeData.outAmPm">
+                                        <option value="" disabled selected>X</option>
+
+      <option value="AM" >AM</option>
+      <option value="PM">PM</option>
+
+   
+    </select>
+            </div>
+            <div class="input-field col s4">
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button class="btn waves-effect waves-light " type="submit">Submit<i class ="material-icons right">send</i></button>
+                </div>
+            </div>
+        </form>
+        <div class="container">
+            <div class="row">
+                <form name="jobDetailsForm" ng-submit="bookJob(jobDetailsData, jobDetailsForm.$valid);">
+                    <div class="input-field col s12">
+                        <select name="location" ng-model="jobDetailsData.location">
+                <option value="" disabled selected>X</option>
+                <option value="ASB SHOWGROUNDS" >ASB SHOWGROUNDS</option>
+                <option value="MISSION BAY" >MISSION BAY</option>
+   
+            </select>
+                        <label>Location</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="contractor" ng-model="jobDetailsData.contractor">
+                <option value="" disabled selected>X</option>
+                <option value="Carlton Events" >Carlton Events</option>
+                <option value="Goldriggers" >Goldriggers</option>
+   
+            </select>
+                        <label>Contractor</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="supervisor" ng-model="jobDetailsData.supervisor">
+                <option value="" disabled selected>X</option>
+                <option value="Hendrix" >Hendrix</option>
+                <option value="Stoves" >Stoves</option>
+   
+            </select>
+                        <label>Supervisor</label>
+                    </div>
+                    <div class="input-field col s12 center-align">
+                        <!-- Modal Trigger -->
+                        <button ng-click="bookJob()" data-target="modal1" id="trigger" class="btn modal-trigger hidden">Modal</button>
+
+                        <button class="btn waves-effect waves-light " type="submit">BOOK<i class ="material-icons right">send</i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div ng-show="loading" class="container">
+            <div class="col s12 animated fadeIn">
+                <div class="center-align">
+                    <i style="font-size:16px;" class="fa fa-cog fa-spin fa-3x fa-fw "></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div ng-show="successfullyBooked" class="col s12 center-align animated fadeIn">
+                <p style="font-size:20px;" class="railway">Job At {{location}} Successfully Booked for {{name}} </p>
+            </div>
+            <div style="border:1px solid#ddd;" class="col s4 center-align animated fadeIn">
+                <p style="font-size:24px;" class="railway">Hrs: </p>
+                <p style="font-size:24px; " class="railway">Mins: </p>
+
+            </div>
+            <div style="border:1px solid black; opacity:.7; height:145px;" class="col s8 center-align">
+                <p style="font-size:22px; color:#ddd;" class=" railway animated fadeIn" ng-show="hrsWorked">{{hrsWorked}}</p>
+                <p style="font-size:22px; color:#ddd;" class="railway animated fadeIn" ng-show="minsWorked">{{minsWorked}}</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+        $('.modal').modal();
+    })
+
+</script>

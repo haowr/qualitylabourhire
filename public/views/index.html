@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html ng-app="qlc" ng-controller="mainCtrl">
+
+<head>
+  <title ng-bind="title">QLH</title>
+  <base href="/">
+  <!-- Compiled and minified CSS -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- <link rel="stylesheet" href="../css/bootstrap.css">-->
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Jura|Montserrat|Playfair+Display+SC|Pontano+Sans|Quicksand|Spectral+SC" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+
+  <script src="https://code.jquery.com/jquery-2.1.3.js" integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+  <script type="text/javascript" src="../js/app.js"></script>
+  <script type="text/javascript" src="../js/angular-route.js"></script>
+  <script type="text/javascript" src="../js/routes.js"></script>
+  <script type="text/javascript" src="../js/pdfmake.js"></script>
+  <script type="text/javascript" src="../js/vfs_fonts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+  <script type="text/javascript" src="../js/saveHtmlToPdf.min.js"></script>
+  <script type="text/javascript" src="../js/rasterizehtml.js"></script>
+  <script src="../js/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+ <script type="text/javascript" src="../js/angular-chart.js"></script>
+
+
+
+
+
+
+
+  <!--        <script type="text/javascript" src="../js/bootstrap.js"></script>-->
+
+
+
+
+  <script type="text/javascript" src="../controllers/taptargetCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/homeCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/registerCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/profileCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/loginCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/calanderCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/managementCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/mainCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/passwordCtrl.js"></script>
+    <script type="text/javascript" src="../controllers/resetCtrl.js"></script>
+        <script type="text/javascript" src="../controllers/displayCtrl.js"></script>
+
+
+
+
+
+  <script type="text/javascript" src="../services/userServices.js"></script>
+  <script type="text/javascript" src="../services/authServices.js"></script>
+    <script type="text/javascript" src="../services/payperiodServices.js"></script>
+  <script type="text/javascript" src="../services/supervisorServices.js"></script>
+  <script type="text/javascript" src="../services/locationServices.js"></script>
+  <script type="text/javascript" src="../services/clientServices.js"></script>
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+  <nav class="nav-extended blue-grey darken-3 ">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo railway orange-text text-lighten-2"><i class = "material-icons white-text">cloud</i>QLH</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/" class="menuhover">Home</a></li>
+        <li ng-show="loggedIn && userClassy == 'admin'" ><a href="/management"class="menuhover">Management</a></li>
+        <li ng-show="loggedIn && userClassy == 'employee'" ><a ng-href="/profile/{{user_id}}"class="menuhover">Profile</a></li>
+                <li ng-show="loggedIn && userClassy == 'client'" class="menuhover"><a ng-href="/clientprofile/{{user_id}}" class="menuhover">Profile</a></li>
+
+      <li ng-show="loggedIn && userClassy == 'employee'" ><a ng-href="/employmentdocuments"class="menuhover">Employee Documentation</a></li>
+
+      <li><a href="/services" class="menuhover">Services</a></li>
+       <li ng-show="!loggedIn"><a href="/clienttoc" class="menuhover">Client Register</a></li>
+      <li ng-show="!loggedIn"><a href="/register" class="menuhover">Employee Register</a></li>
+
+        
+        <li ng-show="!loggedIn"><a href="/login"class="menuhover">Login</a></li>
+        <li ng-show="loggedIn" ng-click="logout()"class="menuhover"><a href="#"class="menuhover">Logout</a></li>
+
+        <li><a href="/contact"class="menuhover">Contact</a></li>
+            <li ng-show="payPeriodIcon" ><a class="menuhover" href="/contact">      
+       <!--     
+      <span class="fa-stack fa-2x">
+  <i class="fas fa-calendar fa-stack-1x fa-lg"></i>
+  <span class=" fa-stack-2x" style="color:black; font-size:25px; padding-top:10px;">{{payPeriod}}</span>
+</span>-->
+  
+  
+  </a></li>
+        <!--   <li ng-show="payPeriodIcon" ><a href="/contact">      
+   <!--         
+      <span class="fa-stack fa-2x">
+  <i class="far fa-comment-alt fa-stack-1x fa-lg"></i>
+  <span class=" fa-stack-2x" style="color:white; font-size:20px; padding-bottom:20px;">{{messageCount}}</span>
+</span>
+  
+  -->
+ <!-- </a></li>-->
+
+      </ul>
+      <ul class="side-nav railway" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        <li ng-show="loggedIn && userClassy == 'admin'" ><a href="/management">Management</a></li>
+        <li ng-show="loggedIn && userClassy == 'employee'" ><a ng-href="/profile/{{user_id}}">Profile</a></li>
+                <li ng-show="loggedIn && userClassy == 'client'" ><a ng-href="/clientprofile/{{user_id}}">Profile</a></li>
+      <li ng-show="loggedIn && userClassy == 'employee'" ><a ng-href="/employmentdocuments">Docs</a></li>
+        <li><a href="/services">Services</a></li>
+        <li ng-show="!loggedIn"><a href="/clienttoc">Client Register</a></li>
+
+        <li ng-show="!loggedIn"><a href="/register">Register</a></li>
+        <li ng-show="!loggedIn"><a href="/login">Login</a></li>
+        <li ng-show="loggedIn" ng-click="logout()"><a href="#">Logout</a></li>
+               
+   
+  
+  </a></li>
+
+
+      </ul>
+    </div>
+    <div class="nav-content">
+
+    </div>
+  </nav>
+
+
+  <main class = "blue-gray">
+
+    <div  ng-view></div>
+
+  </main>
+  <!-- Modal Trigger -->
+
+
+  
+  <footer class="page-footer blue-grey darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="orange-text text-lighten-2 railway">Give us a Shout!</h5>
+          <p class="grey-text text-lighten-4">Call
+            <bold>0292 009 016</bold> today to take advantage of our event crew experience</p>
+            <!--021 778 574-->
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="orange-text railway">Links</h5>
+          <ul>
+            <li><a ng-click="addPayPeriod();" class="grey-text text-lighten-3 railway" href="#">Home</a></li>
+            <li><a ng-click="addJobDetails();"class="grey-text text-lighten-3 railway" href="/services">Services</a></li>
+            <li><a class="grey-text text-lighten-3 railway" href="/register">Employee Register</a></li>
+             <li><a class="grey-text text-lighten-3 railway" href="/clienttoc">Client Register</a></li>
+            <li><a class="grey-text text-lighten-3 railway" href="https://www.facebook.com/qlh.co.nz/"><i class="fab fa-facebook"></i></a></li>
+
+          </ul>
+          <div class = "col s12 center-align">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 QLH
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+       $('.parallax').parallax();
+      console.log($('.tap-target'))
+      /*Form Validation*/
+          setTimeout(function () {
+
+        //$('.tap-target').tapTarget('open');
+        $('select').material_select();
+        $('.carousel.carousel-slider').carousel({ fullWidth: true });
+      }, 20000);
+
+    
+      /*Materialize initializations */
+  
+      //This method wasn't working
+      // $('select').material_select();
+      // $('select:not([multiple])').material_select();
+      console.log($('select'))
+      $('.carousel.carousel-slider').carousel({ fullWidth: true });
+
+      $(".button-collapse").sideNav({
+        menuWidth: 200, // Default is 300
+        edge: 'left', // Choose the horizontal origin
+        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        draggable: true // Choose whether you can drag to open on touch screens,
+
+      }
+      );
+
+    })
+  </script>
+</body>
+
+
+</html>

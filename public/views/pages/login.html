@@ -1,0 +1,61 @@
+ <div class="row animated fadeIn">
+         <div style="border-bottom:1px solid black;"class = "col s12 ">
+        <p style="font-size:24px;" class = "center-align railway">Login!</p>
+
+    </div>
+    <br>
+    <form name ="loginForm" ng-submit="loginUser(loginData,loginForm.$valid,loginForm);"class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input name = "username"ng-model="loginData.username"login.id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">lock</i>
+          <input name = "password" ng-model ="loginData.password"id="icon_telephone" type="password" class="validate">
+          <label for="icon_telephone">password</label>
+        </div>
+      </div>
+      
+      <div class = "row">
+        <div class = "col s12 center-align">
+     <button type="submit"class="waves-effect waves-light blue-grey btn">Submit</button>
+          
+<br>
+        </div>
+        <div class ="col s12 center-align">
+         <a href='/forgotpassword' style="color:black;"> <p class = "montserrat underline">Forgot Password</p></a>
+        </div>
+    </form>
+    <div class = "row" ng-show="loading">
+  <div class = "col s12">
+    <div class = "center-align">
+ <i style = "font-size:16px;"class="fa fa-cog fa-spin fa-3x fa-fw "></i>
+    </div>
+  </div>
+</div>
+    <div  class = "row animated " ng-class = "{'fadeIn':fadein,'fadeOut':!fadein}"  ng-show = "successfulLogin">
+      <br>
+      <div class = "row">
+      <div class = "col s12">
+      </div>
+      </div>
+    <div class = "col s12 green lighten-3 " >
+
+     <p class = " railway center-align black-text " style="font-size:18px;">Login Successful!</p>
+     <br>
+    </div>
+  </div>
+   
+    <div  class = "row animated " ng-class = "{'fadeIn':fadein,'fadeOut':!fadein}" ng-show = "failedLogin ">
+      <div class = "row">
+      <div class = "col s12">
+      </div>
+      </div>
+    <div class = "col s12 red lighten-3" >
+        <p class = " railway center-align black-text " style="font-size:18px;">{{errorMsg}}</p>
+<br>
+    </div>
+  </div>
+ </div>

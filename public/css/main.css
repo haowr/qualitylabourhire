@@ -1,0 +1,289 @@
+ body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+ }
+ main {
+     flex: 1 0 auto;
+ }
+ th{
+     font-weight: normal;
+     font-family:'Railway';
+ }
+ .generatepayslip:active{
+    font-size:50px;
+    transition:.2s;
+ }
+ .calendar-text { margin-top: 30%; }
+/*GENERIC L RULES */
+a{
+    text-decoration:none;
+    color:white;
+}
+.clink{
+    color:red;
+    font-size:200px;
+}
+/* label focus color */
+ .input-field input:focus + label {
+   color: black !important;
+   height:30%;
+   border-radius:0px 0px 0px 0px;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid black !important;
+   box-shadow: 0 1px 0 0 black !important
+ }
+.railway{
+    font-family: 'Raleway', sans-serif;
+}
+.underline{
+    border-bottom:1px solid rgba(0,0,0,.4);
+    display:inline-block;
+}
+.closedissue{
+    opacity:.4;
+        transition:.3s;
+
+}
+.openissue{
+    opacity:1;
+    transition:.3s;
+}
+.complaintsselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.complaintsdeselected{
+    opacity:1;
+    transition:.2s;
+}
+.nptessselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.notesdeselected{
+    opacity:1;
+    transition:.2s;
+}
+.timesheetsselected{
+ opacity:0.4;
+    transition:.2s;
+}
+.timesheetsdeselected{
+   opacity:1;
+    transition:.2s;
+}
+.disputesselected{
+     opacity:0.4;
+    transition:.2s;
+}
+.disputesdeselected{
+       opacity:1;
+    transition:.2s;
+}
+.jobsselected{
+ opacity:0.4;
+    transition:.2s;
+}
+.jobsdeselected{
+   opacity:1;
+    transition:.2s;
+}
+.commentsselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.commentsdeselected{
+    opacity:1;
+    transition:.2s;
+}
+.delinquenttimesheetselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.delinquenttimesheetdeselected{
+    opacity:1;
+    transition:.2s;
+}
+.fadeout{
+    opacity:0;
+    transition:.6s;
+}
+.fadein2{
+    opacity:1;
+    transition:.6s;
+}
+.threed{
+    box-shadow: 2px 2px 2px grey;
+}
+.fadeout2{
+    opacity:0;
+    transition:.3s;
+}
+.bookedjobsselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.bookedjobsdeselected{
+    opacity:1;
+    transition:.2s;
+}
+.composemessagepageselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.composemessagepagedeselected{
+    opacity:1;
+    transition:.2s;
+}
+.messagepageselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.messagedeselected{
+    opacity:1;
+    transition:.2s;
+}
+.workhistoryprofileselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.workhistoryprofiledeselected{
+    opacity:1;
+    transition:.2s;
+}
+.chartspageselected{
+    opacity:0.4;
+    transition:.2s;
+}
+.chartspagedeselected{
+    opacity:1;
+    transition:.2s;
+}
+.clientspageselected{
+    opacity:.4;
+    transition:.2s;
+}
+.clientspageclosed{
+    opacity:1;
+    transition:.2s;
+}
+.managementpageselected{
+    opacity:.4;
+    transition:.2s;
+}
+.managementpageclosed{
+    opacity:1;
+    transition:.2s;
+}
+.employeepageselected{
+    opacity:.4;
+    transition:.2s;
+}
+.employeepageclosed{
+    opacity:1;
+    transition:.2s;
+}
+.payslippageselected{
+    opacity:.4;
+    transition:.2s;
+}
+.payslippageclosed{
+    opacity:1;
+    transition:.2s;
+}
+.payslippageselected{
+    opacity:.4;
+    transition:.2s;
+}
+.payslippageclosed{
+    opacity:1;
+    transition:.2s;
+}
+.management-header{
+    font-size: 24px;
+}
+
+.pimg1{
+  background-image:url('../img/backgroundsmall.jpg');
+    min-height:640px;
+    width:100%;
+    margin:0;
+}
+.hidden{
+    opacity: 0;
+}
+.pimg2{
+
+    background-image:url('../img/background2small.jpg');
+    min-height:400px;
+
+}
+.pimg3{
+
+    background-image:url('../img/background3small.jpg');
+ 
+    min-height:400px;
+
+}
+.pimg4{
+
+    background-image:url('../img/background3small.jpg');
+    min-height:400px;
+
+}
+.removerightborder{
+    border-right:0px solid white;
+}
+.addrightborder{
+    border-right:1px solid #ddd;
+}
+.montserrat{
+    font-family: 'Montserrat';
+    
+}
+/*
+.carousel-slider {
+    height: 400px !important;
+}
+*/
+body, html{
+
+ 
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight:400;
+    line-height:1.8em;
+    color:#666;
+
+}
+#title{
+
+  top:-20%;
+}
+.ptext{
+    position:absolute;
+    top:35%;
+    width:100%;
+    text-align:center;
+    color:black;
+    font-size:27px;
+    letter-spacing:8px;
+    text-transform:uppercase;
+}
+.ptext .border{
+
+   
+    color:#fff;
+    padding:20px;
+
+}
+.menuhover{
+color:white
+}
+.menuhover:hover{
+    color:#ff8533;
+    transition:.3s;
+}

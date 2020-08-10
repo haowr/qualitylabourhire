@@ -1,0 +1,99 @@
+<div class="row animated fadeIn">
+  <div style="border-bottom:1px solid black;"class="col s12 center-align ">
+    <p class=" railway underline" style="font-size:24px;">Employee Registration</p>
+
+  </div>
+  <form name="regForm" ng-submit="register.regEmployee(regData,regForm.$valid,regForm)" id="registrationForm" class="col s12" novalidate>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="first_name" name="name" ng-model="register.regData.name" type="text" class="validate" ng-pattern="/^(([a-zA-Z]{3,20})+[ ]+([a-zA-Z]{3,20})+)+$/" ng-minLength="1" ng-maxLength="20"
+          required>
+        <label for="first_name">Name</label>
+
+        <p class="form-text animated fadeIn" ng-show="(!regForm.name.$pristine && regForm.name.$error.required) || (regForm.$submitted && regForm.name.$error.required)">This field is required</p>
+      
+          <p class="form-text animated fadeIn" ng-class="{'fadeOut': (!regForm.name.$pristine && !regForm.name.$error.pattern)}" ng-show="!regForm.name.$pristine && regForm.name.$error.pattern">Must have a space in between first and last name...</li>
+          <p class="form-text animated fadeIn" ng-show="!regForm.name.$pristine && regForm.name.$error.pattern">Must not contain any special characters...</li>
+          <p class="form-text animated fadeIn" ng-show="!regForm.name.$pristine && regForm.name.$error.pattern">Must not contain any numbers...</li>
+          <p class="form-text animated fadeIn" ng-show = "(!regForm.name.$pristine && regForm.name.$error.minlength)||(!regForm.name.$pristine && regForm.name.$error.maxlength) ">Must be at least 3 characters and no longer than 20 each...</li>
+        
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="username" name="userName" ng-model="register.regData.userName" type="text" class="validate" ng-pattern="/^(?!.*?[\W])(?=.*?[a-zA-Z]|=.*?[A-Z]).{3,16}$/" ng-minLength="3" ng-maxLength="25"
+          required>
+        <label for="username">Username</label>
+        <p class="form-text animated fadeIn" ng-show="(!regForm.userName.$pristine && regForm.userName.$error.required) || (regForm.$submitted && regForm.userName.$error.required)">This field is required</p>
+        <p class="form-text animated fadeIn" ng-show="!regForm.userName.$pristine && regForm.userName.$error.pattern">Must not contain any special characters or spaces...</p>
+        <p class="form-text animated fadeIn" ng-show = "(!regForm.userName.$pristine && regForm.userName.$error.minlength)||(!regForm.userName.$pristine && regForm.userName.$error.maxlength) ">Must be at least 3 characters and no longer than 20 each...</p>
+        
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 l12">
+        <input id="password" type="password" name="password" ng-model="register.regData.password" ng-pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d]).{8,35}$/"ng-minLength = "8" ng-maxLength = "25" class="validate" required>
+        <label for="password">Password</label>
+        <p class="form-text animated fadeIn" ng-show="(!regForm.password.$pristine && regForm.password.$error.required) || (regForm.$submitted && regForm.password.$error.required)">This field is required</p>
+
+        <p class = "animated fadeIn"   ng-show="!regForm.password.$pristine && regForm.password.$error.pattern">Must contain one uppercase letter, one lowercase letter, and a number...</p>
+         <p class = "animated fadeIn"  ng-show = "(!regForm.password.$pristine && regForm.password.$error.minlength)||(!regForm.password.$pristine && regForm.password.$error.maxlength) ">Must be at least 8 characters and no longer than 35 each...</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" name="email" ng-model="register.regData.email" class="validate" required>
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="number" name="phonenumber" ng-model="register.regData.phonenumber" ng-pattern="/^(?=(?:\D*\d){10,15}\D*$)[0-9]{1,3}[\s-]?(?:\(0?[0-9]{1,5}\)|[0-9]{1,5})[-\s]?[0-9][\d\s-]{5,7}\s?(?:x[\d-]{0,4})?$/" class="validate" required>
+        <label for="email">Phonenumber</label>
+        <p class = "animated fadeIn"   ng-show="!regForm.phonenumber.$pristine && regForm.phonenumber.$error.pattern">Must Be A Valid New Zealand Phone Number...</p>
+      </div>
+    </div>
+    <div class="col s12">
+      <label for="Sex">Sex *</label>
+      <select class="error browser-default" id="sex"ng-model="register.regData.sex" name="sex" required>
+                                				<option value="" disabled selected>Sex</option>
+                                				<option value="1">Male</option>
+                                                <option value="2">Female</option>
+                                			</select>
+
+    </div>
+
+  
+  
+    <div class="row">
+      <div class=" input-field col s12 center-align">
+     <button type="submit" class="waves-effect waves-light blue-grey btn">Submit</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+<div class = "row" ng-show="loading">
+  <div class = "col s12">
+    <div class = "center-align">
+ <i style = "font-size:16px;"class="fa fa-cog fa-spin fa-3x fa-fw "></i>
+    </div>
+  </div>
+</div>
+  <div  class = "row animated fadeIn" ng-show = " successReg">
+    <div class = "col s12 green lighten-3" >
+   
+     <p class = "center-align"ng-show = "successMsg">{{successMsg}}</p>
+    </div>
+  </div>
+    <div  class = "row animated fadeIn" ng-show = "failReg ">
+    <div class = "col s12 red lighten-3" >
+   
+     <p class = "center-align"ng-show = "errorMsg"> {{errorMsg}} </p>
+    </div>
+  </div>
