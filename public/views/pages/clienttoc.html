@@ -118,8 +118,14 @@
       <label for="test5">I Have Read And Agree To The Terms And Conditions.</label>
     </p>
         </div>
+        <div class = "col s12 center-align red lighten-5">
+            <p *ngIf="demoMode"class = "montserrat flow-text"> DEMO MODE </p>
+            <p *ngIf="demoMode"class = "montserrat " style="font-size:14px;"> (no client registration) </p>
+
+
+        </div>
               <div class ="col s12 center-align">
-                  
+                
      <a ng-click="continueRegistration()" class="waves-effect waves-light blue-grey btn">Continue</a>
         </div>
      

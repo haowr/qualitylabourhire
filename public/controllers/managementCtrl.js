@@ -8,7 +8,7 @@
 
     })
 
-    app.controller('managementCtrl', function ($scope, Auth, $timeout, $location, $interval, $window, User, $rootScope, Location, Client, Supervisor) {
+    app.controller('managementCtrl', function ($scope, Auth, $timeout, $location, $interval, $window, User, $rootScope, Location, Client, Supervisor, $routeParams) {
 
         $rootScope.$on('$routeChangeStart', function () {
 

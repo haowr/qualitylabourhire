@@ -509,12 +509,12 @@
         <div ng-click="openProfileHome()" class="col s2 left-align" style=" border-left:1px solid #ddd;">
             <div class="left-align">
                 <i class="material-icons orange-text text-lighten-3">account_circle</i>
-                <p class="railway "> Hello {{name}}!</p>
+                <p class="railway  flow-text" style="font-size:17px;"> Hello {{name}}!</p>
 
             </div>
         </div>
 
-        <div ng-show="!clientPage && !loadingNewPayPeriod" class="col s10 center-align" style="border-left:1px solid #ddd ;border-bottom:1px solid #ddd">
+        <div ng-show="!clientPage && !loadingNewPayPeriod" class="col s10 center-align" >
 
 <!--- 
             <div class="col s1 ">
@@ -526,20 +526,20 @@
                 </div>
             </div>-->
             <div class="col s3">
-                <a href="#" style="color:black;"><i ng-click="openHistoryPageProfile()" class="material-icons blue-text text-lighten-3" ng-class="{'workhistoryprofileselected':workHistoryProfileSelected,'workhistoryprofiledeselected':!workHistoryProfileSelected}">access_time</i></a>
+                <a href="#" style="color:black;"><i ng-click="openHistoryPageProfile()" style="font-size:35px;" class="material-icons blue-text text-lighten-3" ng-class="{'workhistoryprofileselected':workHistoryProfileSelected,'workhistoryprofiledeselected':!workHistoryProfileSelected}">access_time</i></a>
                 <div class=" hide-on-small-only profiletitles">
                     <a href="#" style="color:black; font-family:'Montserrat'" ng-click="openHistoryPageProfile()"> <span class="railway underline">Time Sheets</span></a>
                 </div>
             </div>
             <div class="col s3">
-                <a href="#" style="color:black;"><i ng-click="openChartsPage()" class="material-icons yellow-text text-lighten-2" ng-class="{'chartspageselected':chartsPageSelected,'chartspagedeselected':!chartsPageSelected}">timeline</i></a>
+                <a href="#" style="color:black;"><i ng-click="openChartsPage()" style="font-size:35px;"class="material-icons yellow-text text-lighten-2" ng-class="{'chartspageselected':chartsPageSelected,'chartspagedeselected':!chartsPageSelected}">timeline</i></a>
                 <div class=" hide-on-small-only profiletitles">
                     <a href="#" style="color:black; font-family:'Montserrat'" ng-click="openChartsPage()"> <span class="railway underline">Metrics</span></a>
                 </div>
             </div>
             <div class="col s3">
-                <a href="#" style="color:black;"><i ng-show="!messagePageSelected" ng-click="openMessagePage()" class="material-icons green-text text-lighten-3"ng-class="{'messagepageselected':messagePageSelected,'messagepagedeselected':!messagePageSelected}">email</i></a>
-                <a href="#" style="color:black;"><i ng-show="messagePageSelected" ng-click="openMessagePage()" class="material-icons green-text text-lighten-3"ng-class="{'messagepageselected':messagePageSelected,'messagepagedeselected':!messagePageSelected}">drafts</i></a>
+                <a href="#" style="color:black;"><i ng-show="!messagePageSelected" style="font-size:35px;" ng-click="openMessagePage()" class="material-icons green-text text-lighten-3"ng-class="{'messagepageselected':messagePageSelected,'messagepagedeselected':!messagePageSelected}">email</i></a>
+                <a href="#" style="color:black;"><i ng-show="messagePageSelected"  style="font-size:35px;"ng-click="openMessagePage()" class="material-icons green-text text-lighten-3"ng-class="{'messagepageselected':messagePageSelected,'messagepagedeselected':!messagePageSelected}">drafts</i></a>
                 <div class=" hide-on-small-only profiletitles">
                     <a href="#" style="color:black; font-family:'Montserrat'" ng-click="openMessagePage()"> <span class="railway underline">Messages</span></a>
                 </div>
@@ -873,21 +873,22 @@
 
         </div>
 
-        <div ng-show="composeMessagePageOpen &&!profileHome &&!composeMessagePageLoading " class="col s10 center-align animated fadeIn">
-
+        <div ng-show="composeMessagePageOpen &&!profileHome &&!composeMessagePageLoading " class="col s10 left-align animated fadeIn">
+<div class = "row"></div>
    <div class="col s12">
-                    <p class="railway underline" style="font-size:15px;">
-                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:14px;">keyboard_return</i> </a>                       Compose Message Page
+                    <p class="railway underline" style="font-size:20px;">
+                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:20px;">keyboard_return</i> </a>                       
+                      Compose Message Page
                     </p>
                 </div>
             <div class="col s12">
-                <div class="center-align">
+                <div class="left-align">
 
 
                     <div class="row" ng-show="usersPaginated.length">
 
-                        <div ng-show="!messageCompositionPageOpen && currentIndex2 == $index " class="col s2 center-align hide-on-small-only">
-                            <p class="montserrat underline" style="font-size:14px;"> User</p>
+                        <div ng-show="!messageCompositionPageOpen && currentIndex2 == $index " class="col s2 left-align hide-on-small-only">
+                            <p class="montserrat underline" style="font-size:20px;"> User</p>
                         </div>
                         <div ng-show="!messageCompositionPageOpen && currentIndex2 == $index " class="col s10 center-align hide-on-small-only">
 
@@ -900,7 +901,7 @@
 
                                 <div class="col s2 hide-on-small-only" style="border-left:1px solid #ddd;" ng-show="!messageCompositionPageOpen && currentIndex2 !== $index ">
                                     <a href="#" style="color:black;">
-                                        <p ng-click="openMessageCompositionPage($index,true)" class="railway truncate underline">{{page.name}}</p>
+                                        <p ng-click="openMessageCompositionPage($index,true)" style="font-size:14px;" class="railway truncate underline">{{page.name}}</p>
                                     </a>
                                 </div>
                                 <div ng-show="!messageCompositionPageOpen && currentIndex2 !== $index" class="col s10 center-align animated fadeIn hide-on-small-only">
@@ -955,15 +956,16 @@
 
                                         <div class="col 12 right-align " style="float:right;">
 
-                                            <a href="#" style="color:black; ">
-                                                <i ng-click="openMessageCompositionPage($index,true)" style="font-size:17px;"class = "material-icons underline">clear</i></a>
+                      
+                                        </div>
+                                        <div class="col s12 left-align">
+                                            <p class="montserrat " style="font-size:25px;"> 
+                                                <i ng-click="openMessageCompositionPage($index,true)" style="font-size:28px;"class = "material-icons underline">keyboard_return</i></a>
+
+                                                {{page.name}}:</p>
 
                                         </div>
-                                        <div class="col s12 center-align">
-                                            <p class="montserrat underline" style="font-size:16px;"> {{page.name}}</p>
-
-                                        </div>
-                                        <div class="col s12" style="border-top:1px solid #ddd; border-left:1px solid #ddd; border-right:1px solid #ddd;">
+                                        <div class="col s12" >
                                             <div class="input-field col s6">
 
                                                 <input id="first_name2" ng-model="message.subject" type="text" class="validate">
@@ -975,7 +977,7 @@
                                         <div class "col s6">
                                         </div>
                                         <div class="row">
-                                            <form class="col s12" style="border-right:1px solid #ddd; border-bottom:1px solid #ddd; border-left:1px solid #ddd;">
+                                            <form class="col s12" >
                                                 <div class="row">
 
                                                     <div class="input-field col s12">
@@ -997,6 +999,7 @@
                                     </div>
 
                                     <p ng-click="openMessage($index,true)" class="animated fadeIn railway underline"><a style="color:black;" href="#">{{page.subject}}</a></p>
+                                
                                 </div>
 
 
@@ -1045,10 +1048,12 @@
         </div>
 
         <div ng-show="messagePageOpen &&!profileHome && !messagesLoading" class="col s10 center-align animated fadeIn">
-            
-               <div class="col s12">
-                    <p class="railway underline" style="font-size:15px;">
-                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:14px;">keyboard_return</i> </a>                       Messages Page
+
+            <div class = "row"></div>
+          
+               <div class="col s12 left-align">
+                    <p class="railway underline" style="font-size:20px;">
+                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:20px;">keyboard_return</i> </a>                       Messages Page
                     </p>
                 </div>
             <div class="col s12" style="border-right:1px solid #ddd;">
@@ -1195,13 +1200,14 @@
         <div ng-show="historyPageOpenProfile && !loadingWorkHistoryProfile" class="col s10 center-align animated fadeIn">
             <div class="col s12" style="border-bottom: 1px solid #ddd; border-top: 1px slid #ddd;">
 
-                
-                <div class="col s12">
-                    <p class="railway underline" style="font-size:15px;">
-                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:14px;">keyboard_return</i> </a>                       Time Sheet Page
+                <div class = "row"></div>
+                <div class="col s12 left-align">
+                    <p class="railway underline" style="font-size:20px;">
+                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:20px;">keyboard_return</i> </a>                       Time Sheet Page
                     </p>
                 </div>
                 </p>
+                <div class= "col s12" style="border:1px solid #ddd;"></div>
                 <div class="row ">
                     <div ng-show="loadingPersonalHistory" class="col s12 center-align">
                         <!-- <i class="fas fa-circle-notch fa-spin"></i>-->
@@ -1212,7 +1218,7 @@
 
 
                     </div>
-                    <div ng-show="personalHistoryOpen && !loadingPersonalHistory" class="col s12 center-align">
+                    <div ng-show="personalHistoryOpen && !loadingPersonalHistory" class="col s12 left-align">
                         <div class="row">
                             <div class="col s3 center-align">
                                 <p style="font-size:14px;" class="railway animated fadeIn underline ">Pay Period</p>
@@ -1650,30 +1656,33 @@
             <br>
 
         </div>
-        <div class="col s10 animated fadeIn" ng-show="chartsPageOpen &&!loadingChart">
-
+        <div class="col s10 left-align animated fadeIn" ng-show="chartsPageOpen &&!loadingChart">
+            <div class ="row"></div>
             <div class="row hide-on-small-only">
                  <div class="col s12">
-                    <p class="railway underline" style="font-size:15px;">
-                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:14px;">keyboard_return</i> </a>                       Metrics Page
+                    <p class="railway underline" style="font-size:20px;">
+                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:20x;">keyboard_return</i> </a>                       Metrics Page
                     </p>
                 </div>
-                <div class="col s2">
-                </div>
+                <div class="col s12" style="border:1px solid #ddd;"></div>
                 <div class="col s8">
                     <br>
                     <canvas id="line" class="chart chart-line" chart-data="dataForChartsPage" chart-labels="labelsForChartsPage" chart-series="series2"
                         chart-options="optionsLineChart" chart-dataset-override="datasetOverrideLineChart" chart-click="onClick">
                     </canvas>
                 </div>
+                <div class="col s2 left-align">
+                  
+                </div>
                 <div class="col s2">
                 </div>
 
             </div>
+            
             <div class="row hide-on-med-and-up">
                    <div class="col s12">
-                    <p class="railway underline" style="font-size:15px;">
-                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:14px;">keyboard_return</i> </a>                       Metrics Page
+                    <p class="railway underline" style="font-size:20px;">
+                      <a href="#"style="color:black;" > <i ng-click="openProfileHome();" class='material-icons' style="font-size:20px;">keyboard_return</i> </a>                       Metrics Page
                     </p>
                 </div>
                 <div class="col s12">

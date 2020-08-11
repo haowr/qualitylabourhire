@@ -24,6 +24,7 @@
         $scope.failReg = false;
        $scope.errorMsg = false;
         $scope.successMsg = false;
+        $scope.demoMode = false;
   
                 $scope.iAgreeData={
             yes:false
@@ -36,11 +37,21 @@
             console.log($scope.iAgreeData)
         }
         $scope.continueRegistration = function () {
+
             if ($scope.iAgreeData.yes) {
+
                 console.log("You Agree! >:)")
                 console.log($scope.regData)
-                $location.path('/clientregister');
+                $scope.demoMode = true;
+                setTimeout(()=>{
+
+                    $scope.demoMode = false;
+
+                },3000)
+                //$location.path('/clientregister');
+
             } else {
+                
                 $scope.shakeOn = true;
                 $timeout(function () {
                     $scope.shakeOn = false;
@@ -93,7 +104,7 @@
                 
                 this.regData.userclass = "client"
                 this.regData.iagree = true;
-                $location.path('/clientregister')
+                /*$location.path('/clientregister')
 
               
                 $scope.loading= true;
@@ -120,7 +131,7 @@
                             console.log($scope.failReg)
                         },3000)
                     }
-                })
+                })*/
             }else{
                 console.log("Incomplete form..")
             }

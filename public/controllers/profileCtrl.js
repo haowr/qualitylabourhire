@@ -14,6 +14,8 @@
         $scope.$on('$routeChangeSuccess', function () {
 
             $('.carousel').carousel();
+            console.log("Route Params",$routeParams)
+
 
         });
         $rootScope.$on('$routeChangeStart', function () {
@@ -22,6 +24,7 @@
 
             Auth.getUser().then(function (data) {
 
+                console.log(data)
                 $rootScope.payPeriod = data.data.payperiod;
                 $rootScope.userClassy = $rootScope.userClass
 
@@ -69,6 +72,7 @@
         $scope.availability = 2;
         $scope.userObject = {};
         $scope.user_id = "";
+        $scope.routeId = $routeParams.userid
         $scope.calander = [[], [], []];
         $scope.june1 = false;
         $scope.june1Booked = false;
@@ -2031,37 +2035,35 @@
 
             }
 
+        } 
+        $scope.openRequestJobForm = function(){
+
+            if(!$scope.requestJobFormOpen){
+
+                $scope.requestJobFormOpen = true
+                $scope.requestListOpen = false;
+
+            }else{
+
+                $scope.requestJobFormOpen = false;
+
+            }
+
         }
-        
-$scope.openRequestJobForm = function(){
+        $scope.openRequestList = function(){
 
-    if(!$scope.requestJobFormOpen){
+            if(!$scope.requestListOpen){
 
-        $scope.requestJobFormOpen = true
-        $scope.requestListOpen = false;
+                $scope.requestListOpen = true;
+                $scope.requestJobFormOpen = false;
 
-    }else{
+            }else{
 
-        $scope.requestJobFormOpen = false;
+                $scope.requestListOpen = false;
 
-    }
+            }
 
-}
-$scope.openRequestList = function(){
-
-    if(!$scope.requestListOpen){
-
-        $scope.requestListOpen = true;
-        $scope.requestJobFormOpen = false;
-
-    }else{
-
-        $scope.requestListOpen = false;
-
-    }
-
-}
-
+        }
         $scope.openRequestEmployeePage = function () {
 
             $scope.requestEmployeePageLoading = true;
@@ -2150,7 +2152,6 @@ $scope.openRequestList = function(){
             }
 
         }
-      
         Auth.getUser().then(function (data) {
 
             //console.log(data)
@@ -2186,7 +2187,6 @@ $scope.openRequestList = function(){
             })
 
         })
-   
         $scope.addPayPeriodToPayPeriodHistory = function (details) {
 
             $scope.employeeJobDetails.payperiod = $rootScope.payPeriod;
@@ -4255,7 +4255,7 @@ $scope.openRequestList = function(){
             if (!$scope.chartsPageOpen) {
 
                 $scope.chartsPageOpen = true;
-                $scope.loadingChart = true;
+                //$scope.loadingChart = true;
                 $scope.chartsPageSelected = true;
                 $scope.workHistoryProfileSelected = false
                 $scope.messagePageSelected = false;
@@ -4549,7 +4549,7 @@ $scope.openRequestList = function(){
                 $scope.messageForPagination = [];
                 $scope.pageLimit = 4;
 
-                User.getMessages($scope.name).then(function (data) {
+                User.getMessages($scope.routeId).then(function (data) {
 
                     //console.log(data)
                     $scope.messagesArray = data.data.messages;
