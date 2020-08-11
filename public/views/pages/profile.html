@@ -508,8 +508,22 @@
         <!-- <p style="font-size:18px;" class="railway animated fadeIn">Profile Page</p>-->
         <div ng-click="openProfileHome()" class="col s2 left-align" style=" border-left:1px solid #ddd;">
             <div class="left-align">
-                <i class="material-icons orange-text text-lighten-3">account_circle</i>
-                <p class="railway  flow-text" style="font-size:17px;"> Hello {{name}}!</p>
+                <a href="#" style="color:black;">
+
+                <i class="material-icons orange-text text-lighten-3" style="font-size:35px;">account_circle</i>
+
+                </a>
+
+                <div class=" hide-on-small-only profiletitles">
+                    <a href="#" style="color:black; font-family:'Montserrat'" ng-click="openHistoryPageProfile()"> 
+                        <span class="railway " > Hello {{name}}!</span>
+                        </a>
+                        <br>
+                    <a href="#" style="color:black; font-family:'Montserrat'" ng-click="openHistoryPageProfile()"> 
+                    <span class="railway " > Hello {{name}}!</span>
+                    </a>
+
+                </div>
 
             </div>
         </div>
